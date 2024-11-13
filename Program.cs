@@ -38,5 +38,5 @@ app.UseAuthorization();
 app.MapControllers();
 // PeliculaController.InicializarDatos();
 // AsientoController.InicializarDatos();
-SalaController.InicializarDatos();
+SesionController.InicializarDatos();
 app.Run();
