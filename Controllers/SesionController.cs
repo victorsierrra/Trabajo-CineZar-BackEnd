@@ -168,7 +168,7 @@ namespace CineZarAPI.Controllers
                 Entrada entrada = sesion.Entradas.Last();
                 string to = "a27300@svalero.com";
                 string asunto = "Prueba";
-                string cuerpo = $"Enhorabuena por adquirir las entradas para ver {sesion.pelicula.Titulo} a las {sesion.Hora}.\n Ha seleccionado sentarse en la fila {entrada.asiento.fila} en el asiento {entrada.asiento.Numero} y tiene que acudir a la sala {sala.NumeroSala}, se le recomienda llegar con 30 minutos de antelación.\n ¡Que disfrute la experiencia cineZar!";
+                string cuerpo = $"Enhorabuena por adquirir las entradas para ver {sesion.pelicula.Titulo} a las {sesion.Hora}.\n Ha seleccionado sentarse en la fila {entrada.asiento.fila} en el asiento {entrada.asiento.Numero} y tiene que acudir a la sala {sesion.NumeroSala}, se le recomienda llegar con 30 minutos de antelación.\n ¡Que disfrute la experiencia cineZar!";
                 string host = "smtp.gmail.com";
                 int puerto = 587;
                 SmtpClient client = new SmtpClient(host);
