@@ -122,10 +122,10 @@ namespace CineZarAPI.Controllers
         {
             
 
-            Sesion Cars1 = new Sesion(peliculas.FirstOrDefault(p => p.Id == 1), "16:00", 1);
-            Sesion Cars2 = new Sesion(peliculas.FirstOrDefault(p => p.Id == 1), "19:00", 1);
-            Sesion Torrente1 = new Sesion(peliculas.FirstOrDefault(p => p.Id == 2), "17:00", 2);
-            Sesion Torrente2 = new Sesion(peliculas.FirstOrDefault(p => p.Id == 2), "20:00", 2);
+            Sesion Cars1 = new Sesion(PeliculaController.peliculas.FirstOrDefault(p => p.Id == 1), "16:00", 1);
+            Sesion Cars2 = new Sesion(PeliculaController.peliculas.FirstOrDefault(p => p.Id == 1), "19:00", 1);
+            Sesion Torrente1 = new Sesion(PeliculaController.peliculas.FirstOrDefault(p => p.Id == 2), "17:00", 2);
+            Sesion Torrente2 = new Sesion(PeliculaController.peliculas.FirstOrDefault(p => p.Id == 2), "20:00", 2);
             Sesiones.Add(Cars1);
             Sesiones.Add(Cars2);
             Sesiones.Add(Torrente1);
