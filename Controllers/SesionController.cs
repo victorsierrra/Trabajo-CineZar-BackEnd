@@ -58,7 +58,7 @@ namespace CineZarAPI.Controllers
 
 
         [HttpPut("ComprarEntrada/{id}")]
-        public IActionResult ComprarEntrada(int id, int idAsiento, bool comprado)
+        public IActionResult ComprarEntrada(int id, int[] idAsientos)
         {
             Sesion sesion = Sesiones.FirstOrDefault(s => s.Id == id);
 
@@ -66,34 +66,42 @@ namespace CineZarAPI.Controllers
             {
                 return NotFound();
             }
-
-            Asiento asientoEntrada = sesion.Asientos.FirstOrDefault(a => a.Id == idAsiento);
-
-            int posicion = sesion.Asientos.IndexOf(asientoEntrada);
-
-            if (posicion != -1)
+            foreach (var _idAsiento in idAsientos)
             {
-                if (asientoEntrada == null)
+                Asiento prueba = sesion.Asientos.FirstOrDefault(a => a.Id == _idAsiento);
+                if (prueba.Comprado == true)
+                {
+                    return BadRequest("Uno de los asientos seleccionados no está disponible");
+                }
+            }
+            foreach (int idAsiento in idAsientos)
+            {
+                Asiento asientoEntrada = sesion.Asientos.FirstOrDefault(a => a.Id == idAsiento);
+
+                int posicion = sesion.Asientos.IndexOf(asientoEntrada);
+
+                if (posicion != -1)
+                {
+                    if (asientoEntrada == null)
+                    {
+                        return NotFound();
+                    }
+                    else if (asientoEntrada.Comprado == true)
+                    {
+                        return BadRequest("El asiento ya ha sido comprado");
+                    }
+                }
+                else
                 {
                     return NotFound();
                 }
-                else if (comprado == false)
-                {
-                    return BadRequest("No se puede cambiar a falso");
-                }
-                else if (asientoEntrada.Comprado == true)
-                {
-                    return BadRequest("El asiento ya ha sido comprado");
-                }
+                asientoEntrada.Comprado = true;
+                Entrada entrada = new Entrada(asientoEntrada, 4.50);
+                sesion.Asientos[posicion] = asientoEntrada;
+                sesion.Entradas.Add(entrada);
             }
-            else
-            {
-                return NotFound();
-            }
-            asientoEntrada.Comprado = true;
-            Entrada entrada = new Entrada(asientoEntrada, 4.50);
-            sesion.Asientos[posicion] = asientoEntrada;
-            sesion.Entradas.Add(entrada);
+
+
             //EnviarEntrada();
 
             return Ok(sesion.Entradas);
