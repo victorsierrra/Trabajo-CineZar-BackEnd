@@ -18,11 +18,13 @@ public class Sesion
         Entradas = new List<Entrada>();
         Asientos = new List<Asiento>();
 
-        char[] Letras = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+        char[] Letras = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+        'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
-        for (int y = 0; y < Constantes.Columnas; y++)
+
+        for (int y = 0; y < Constantes.Filas; y++)
         {
-            for (int x = 0; x < Constantes.Filas; x++)
+            for (int x = 0; x < Constantes.Columnas; x++)
             {
                 Asientos.Add(new Asiento(Letras[y], x + 1));
             }
