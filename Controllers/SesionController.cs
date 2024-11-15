@@ -11,7 +11,7 @@ namespace CineZarAPI.Controllers
 
     public class SesionController : ControllerBase
     {
-        private static List<Sesion> Sesiones = new List<Sesion>();
+        public static List<Sesion> Sesiones = new List<Sesion>();
 
 
         [HttpGet]
@@ -29,6 +29,14 @@ namespace CineZarAPI.Controllers
                 return NotFound();
             }
             return Ok(Sesion);
+        }
+                [HttpGet("Fecha")]
+        public ActionResult<Sesion> GetFecha()
+        {
+            List<DateTime> fechas = new List<DateTime>();
+           fechas.Add(DateTime.Today.AddHours(9).AddMinutes(30));
+           fechas.Add(DateTime.Today.AddHours(14));
+            return Ok(fechas);
         }
 
 
@@ -48,9 +56,8 @@ namespace CineZarAPI.Controllers
                 return NotFound();
             }
             Sesion.Asientos = updatedSesion.Asientos;
-            Sesion.pelicula = updatedSesion.pelicula;
             Sesion.NumeroSala = updatedSesion.NumeroSala;
-            Sesion.Hora = updatedSesion.Hora;
+            Sesion.HoraSesion = updatedSesion.HoraSesion;
 
             return NoContent();
         }
@@ -117,20 +124,20 @@ namespace CineZarAPI.Controllers
             Sesiones.Remove(sesion);
             return NoContent();
         }
-
+/*
         public static void InicializarDatos()
         {
             
 
-            Sesion Cars1 = new Sesion(PeliculaController.peliculas.FirstOrDefault(p => p.Id == 1), "16:00", 1);
-            Sesion Cars2 = new Sesion(PeliculaController.peliculas.FirstOrDefault(p => p.Id == 1), "19:00", 1);
-            Sesion Torrente1 = new Sesion(PeliculaController.peliculas.FirstOrDefault(p => p.Id == 2), "17:00", 2);
-            Sesion Torrente2 = new Sesion(PeliculaController.peliculas.FirstOrDefault(p => p.Id == 2), "20:00", 2);
+            Sesion Cars1 = new Sesion("16:00", 1);
+            Sesion Cars2 = new Sesion("19:00", 1);
+            Sesion Torrente1 = new Sesion("17:00", 2);
+            Sesion Torrente2 = new Sesion("20:00", 2);
             Sesiones.Add(Cars1);
             Sesiones.Add(Cars2);
             Sesiones.Add(Torrente1);
             Sesiones.Add(Torrente2);
-        }
+        }*/
 
         static void EnviarEntrada(int idSesion)
         {
@@ -140,7 +147,7 @@ namespace CineZarAPI.Controllers
                 Entrada entrada = sesion.Entradas.Last();
                 string to = "a27300@svalero.com";
                 string asunto = "Prueba";
-                string cuerpo = $"Enhorabuena por adquirir las entradas para ver {sesion.pelicula.Titulo} a las {sesion.Hora}.\n Ha seleccionado sentarse en la fila {entrada.asiento.fila} en el asiento {entrada.asiento.Numero} y tiene que acudir a la sala {sesion.NumeroSala}, se le recomienda llegar con 30 minutos de antelación.\n ¡Que disfrute la experiencia cineZar!";
+                string cuerpo = $"Enhorabuena por adquirir las entradas para ver {sesion} a las {sesion.HoraSesion}.\n Ha seleccionado sentarse en la fila {entrada.asiento.fila} en el asiento {entrada.asiento.Numero} y tiene que acudir a la sala {sesion.NumeroSala}, se le recomienda llegar con 30 minutos de antelación.\n ¡Que disfrute la experiencia cineZar!";
                 string host = "smtp.gmail.com";
                 int puerto = 587;
                 SmtpClient client = new SmtpClient(host);

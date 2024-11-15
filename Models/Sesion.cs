@@ -2,18 +2,17 @@ namespace CineZarAPI.Models;
 
 public class Sesion
 {
-    public Pelicula pelicula { get; set; }
     public int Id { get; private set; } = 0;
     private static int Identificador { get; set; } = 0;
     public List<Entrada> Entradas { get; set; }
     public List<Asiento> Asientos { get; set; }
     public int NumeroSala { get; set; } = 1;
-    public string Hora { get; set; } = DateTime.Now.ToString("HH:mm");
+    public DateTime HoraSesion { get; set; } = DateTime.Now;
 
-    public Sesion(Pelicula peli, string hora, int numeroSala)
+    public Sesion(DateTime horaSesion, int numeroSala)
     {
-        pelicula = peli;
         Identificador++;
+        NumeroSala = numeroSala;
         Id = Identificador;
         Entradas = new List<Entrada>();
         Asientos = new List<Asiento>();
@@ -32,7 +31,7 @@ public class Sesion
 
 
         NumeroSala = numeroSala;
-        Hora = hora;
+        HoraSesion = horaSesion;
 
     }
 }
