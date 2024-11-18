@@ -36,7 +36,7 @@ namespace CineZarAPI.Controllers
             {
                 return NotFound();
             }
-            return Ok(pelicula.Sesiones);
+            return Ok(pelicula.sesiones);
         }
 
         [HttpPost]
@@ -70,7 +70,7 @@ namespace CineZarAPI.Controllers
         public IActionResult ComprarEntrada(int id, int idSesion, int[] idAsientos)
         {
             Pelicula pelicula = peliculas.FirstOrDefault(p => p.Id == id);
-            Sesion sesion = pelicula.Sesiones.FirstOrDefault(s => s.Id == id);
+            Sesion sesion = pelicula.sesiones.FirstOrDefault(s => s.Id == id);
 
             if (sesion == null)
             {
