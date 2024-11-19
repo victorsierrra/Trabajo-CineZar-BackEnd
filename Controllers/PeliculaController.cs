@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using CineZarAPI.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace CineZarAPI.Controllers
 {
