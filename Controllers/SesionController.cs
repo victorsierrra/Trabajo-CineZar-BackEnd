@@ -31,13 +31,6 @@ namespace CineZarAPI.Controllers
             return Ok(Sesion);
         }
                 [HttpGet("Fecha")]
-        public ActionResult<Sesion> GetFecha()
-        {
-            List<DateTime> fechas = new List<DateTime>();
-           fechas.Add(DateTime.Today.AddHours(9).AddMinutes(30));
-           fechas.Add(DateTime.Today.AddHours(14));
-            return Ok(fechas);
-        }
 
 
         [HttpPost]
@@ -123,21 +116,7 @@ namespace CineZarAPI.Controllers
             }
             Sesiones.Remove(sesion);
             return NoContent();
-        }
-/*
-        public static void InicializarDatos()
-        {
-            
-
-            Sesion Cars1 = new Sesion("16:00", 1);
-            Sesion Cars2 = new Sesion("19:00", 1);
-            Sesion Torrente1 = new Sesion("17:00", 2);
-            Sesion Torrente2 = new Sesion("20:00", 2);
-            Sesiones.Add(Cars1);
-            Sesiones.Add(Cars2);
-            Sesiones.Add(Torrente1);
-            Sesiones.Add(Torrente2);
-        }*/
+        }/*
 
         static void EnviarEntrada(int idSesion)
         {
@@ -170,6 +149,6 @@ namespace CineZarAPI.Controllers
             }
 
 
-        }
+        }*/
     }
 }
