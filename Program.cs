@@ -13,7 +13,7 @@ var app = builder.Build();
 app.UseCors(configurePolicy: policy => 
 {
     // policy.WithOrigins("*","https://localhost","http://localhost");
-    policy.AllowAnyOrigin();
+    policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
 });
 
 // Configure the HTTP request pipeline.
