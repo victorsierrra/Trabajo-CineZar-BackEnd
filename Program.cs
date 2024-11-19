@@ -1,19 +1,6 @@
 using CineZarAPI.Controllers;
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(
-        policy =>
-        {
-            policy.WithOrigins("https://localhost:7165/api",
-                                "http://localhost:88",
-                                "http://127.0.0.1:5500")
-                                .AllowAnyHeader()
-                                .AllowAnyMethod();
-        });
-});
-
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -22,6 +9,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
  
 var app = builder.Build();
+
+app.UseCors(configurePolicy: policy => 
+{
+    // policy.WithOrigins("*","https://localhost","http://localhost");
+    policy.AllowAnyOrigin();
+});
 
 // Configure the HTTP request pipeline.
 // if (app.Environment.IsDevelopment())
@@ -35,7 +28,6 @@ app.UseHttpsRedirection();
 app.UseCors();
 
 app.UseAuthorization();
-
 app.MapControllers();
 PeliculaController.InicializarDatos();
 // AsientoController.InicializarDatos();
