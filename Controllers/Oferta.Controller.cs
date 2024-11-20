@@ -12,16 +12,23 @@ namespace CineZarAPI.Controllers
             new Oferta
             {
                 Id = 1,
-                Titulo = "¡Gran descuento en cine!",
-                Descripcion = "Obtén un 50% de descuento en tu próxima película.",
-                ImagenUrl = "https://spaziocines.es/wp-content/uploads/2023/01/Diseno-sin-titulo-5.png"
+                Titulo = "¡Combo Dulce!",
+                Descripcion = "Con nuestro combo Dulce tendras nuestras palomitas en su tamaño MAS grande junto a un dulce a elegir y un refresco!!",
+                ImagenUrl = "https://i.etsystatic.com/25684300/r/il/34d66c/6008075368/il_fullxfull.6008075368_l9cf.jpg"
             },
             new Oferta
             {
                 Id = 2,
                 Titulo = "Promo 2x1",
-                Descripcion = "Compra un boleto y recibe otro gratis.",
-                ImagenUrl = "https://spaziocines.es/wp-content/uploads/2023/01/Diseno-sin-titulo-5.png"
+                Descripcion = "Compra uno de nuestros pack´s dulces y llevate el segundo G R A T I S.",
+                ImagenUrl = "https://i.etsystatic.com/38396355/r/il/7c3bc3/5411909938/il_fullxfull.5411909938_tmwr.jpg"
+            },
+            new Oferta
+            {
+                Id = 2,
+                Titulo = "Pack Cine Supreme",
+                Descripcion = "Para los mas golosos!!. Con nuestro pack Supreme tendras dos cubos de palomitas junto a tus snacks favoritos!!   .",
+                ImagenUrl = "https://i.etsystatic.com/26585998/r/il/ccd262/2809401285/il_570xN.2809401285_pqv6.jpg"
             }
         };
 
