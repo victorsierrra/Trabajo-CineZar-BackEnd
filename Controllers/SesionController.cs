@@ -30,28 +30,6 @@ namespace CineZarAPI.Controllers
             }
             return Ok(Sesion);
         }
-        [HttpGet("AsientosReservados")]
-        public ActionResult<Sesion> GetAsientos(int id,int[] idAsientos)
-        {
-            Sesion sesion = Sesiones.FirstOrDefault(s => s.Id == id);
-            List<Asiento> asientos = new List<Asiento>();
-            if (sesion == null)
-            {
-                return NotFound();
-            }
-            foreach (var _idAsiento in idAsientos)
-            {
-                Asiento asiento = sesion.Asientos.FirstOrDefault(a => a.Id == _idAsiento);
-                if (asiento == null)
-                {
-                    return NotFound();
-                }else{
-                    asientos.Add(asiento);
-                }
-            }
-            return Ok(asientos);
-        }
-
 
         [HttpPost]
         public ActionResult<Sesion> CreateSesion(Sesion Sesion)

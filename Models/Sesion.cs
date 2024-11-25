@@ -1,4 +1,5 @@
 namespace CineZarAPI.Models;
+using CineZarAPI.Controllers;
 
 public class Sesion
 {
@@ -28,6 +29,7 @@ public class Sesion
                 Asientos.Add(new Asiento(Letras[y], x + 1));
             }
         }
+        AsientoController.asientos.AddRange(Asientos);
 
 
         NumeroSala = numeroSala;
