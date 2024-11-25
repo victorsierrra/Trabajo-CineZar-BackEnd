@@ -25,7 +25,7 @@ app.UseCors(configurePolicy: policy =>
 
 app.UseHttpsRedirection();
 
-app.UseCors();
+
 
 app.UseAuthorization();
 app.MapControllers();
