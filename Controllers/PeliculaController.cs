@@ -133,7 +133,7 @@ namespace CineZarAPI.Controllers
         public static void InicializarDatos()
         {
             peliculas.Add(new Pelicula("Cars", "El aspirante a campeón de carreras Rayo McQueen parece que está a punto de conseguir el éxito. Su actitud arrogante se desvanece cuando llega a una pequeña comunidad olvidada que le enseña las cosas importantes de la vida que había olvidado.",
-            "Brian Free", 117, "https://es.web.img2.acsta.net/pictures/14/05/28/11/24/435900.jpg","Animación, Infantil, Familiar, Acción, Comedia",  2006, 1));
+            "Brian Free", 117, "https://es.web.img2.acsta.net/pictures/14/05/28/11/24/435900.jpg","Animación, Infantil, Familiar",  2006, 1));
             peliculas.Add(new Pelicula("Torrente, El brazo tonto de la ley", "Torrente es un policía español, machista, racista y alcohólico. Este magnífico representante de las fuerzas del orden vive, con su padre hemipléjico, en Madrid. Gracias a su olfato, descubre en su propio barrio una importante red de narcotraficantes.",
             "Santiago Segura", 97, "https://play-lh.googleusercontent.com/jOSN3SUTJStEHHKBNZ8Hidy_ZTsW8eiOYE30BYh7jWxKPK-RcoGyZFKbTZjezSZSwfsY","Suspense, Comedia negra, acción",1998, 2));
             peliculas.Add(new Pelicula("Mientras dure la guerra", "España, 1936. El célebre escritor Miguel de Unamuno decide apoyar públicamente la sublevación militar. Inmediatamente es destituido por el gobierno republicano como rector de la Universidad de Salamanca. Mientras, el general Franco consigue sumar sus tropas al frente sublevado e inicia una exitosa campaña.",
