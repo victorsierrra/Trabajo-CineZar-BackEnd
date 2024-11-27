@@ -9,7 +9,7 @@ namespace CineZarAPI.Controllers
 
     public class EntradaController : ControllerBase
     {
-        private static List<Entrada> entradas = new List<Entrada>();
+        public static List<Entrada> entradas = new List<Entrada>();
 
 
         [HttpGet]

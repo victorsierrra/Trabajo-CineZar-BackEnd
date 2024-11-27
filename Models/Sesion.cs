@@ -9,12 +9,16 @@ public class Sesion
     public List<Asiento> Asientos { get; set; }
     public int NumeroSala { get; set; } = 1;
     public DateTime HoraSesion { get; set; } = DateTime.Now;
+    public double precioEntrada {get; set;} = 0;
+    int precioFinSemana = 0;
 
-    public Sesion(DateTime horaSesion, int numeroSala)
+    public Sesion(DateTime horaSesion, int numeroSala, double precioSesion)
     {
         Identificador++;
         NumeroSala = numeroSala;
         Id = Identificador;
+        comprobarFinde(horaSesion);
+        precioEntrada = precioSesion + precioFinSemana;
         Entradas = new List<Entrada>();
         Asientos = new List<Asiento>();
 
@@ -35,5 +39,14 @@ public class Sesion
         NumeroSala = numeroSala;
         HoraSesion = horaSesion;
 
+    }
+        private double comprobarFinde(DateTime dia)
+    {
+        List<string> diasFinde = ["friday", "saturday", "sunday"];
+        if (diasFinde.Contains(dia.DayOfWeek.ToString().ToLower()))
+        {
+            precioFinSemana = 2;
+        }
+        return precioFinSemana;
     }
 }

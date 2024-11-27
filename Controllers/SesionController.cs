@@ -93,13 +93,15 @@ namespace CineZarAPI.Controllers
                     return NotFound();
                 }
                 asientoEntrada.Comprado = true;
-                Entrada entrada = new Entrada(asientoEntrada, 4.50);
+                Entrada entrada = new Entrada(asientoEntrada, sesion.precioEntrada);
                 sesion.Asientos[posicion] = asientoEntrada;
                 sesion.Entradas.Add(entrada);
             }
 
 
             //EnviarEntrada(id);
+
+            EntradaController.entradas.AddRange(sesion.Entradas);
 
             return Ok(sesion.Entradas);
         }
