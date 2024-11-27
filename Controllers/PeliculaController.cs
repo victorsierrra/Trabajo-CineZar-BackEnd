@@ -29,7 +29,7 @@ namespace CineZarAPI.Controllers
             return Ok(pelicula);
         }
         
-        [HttpGet("VerSesiones/{id}")]
+        [HttpGet("{id}/VerSesiones")]
         public ActionResult<Pelicula> GetSesionesPelicula(int id)
         {
             Pelicula pelicula = peliculas.FirstOrDefault(p => p.Id == id);
@@ -66,56 +66,6 @@ namespace CineZarAPI.Controllers
            
 
             return NoContent();
-        }
-        [HttpPut("ComprarEntradas/{id}")]
-        public IActionResult ComprarEntrada(int id, int idSesion, int[] idAsientos)
-        {
-            Pelicula pelicula = peliculas.FirstOrDefault(p => p.Id == id);
-            Sesion sesion = pelicula.sesiones.FirstOrDefault(s => s.Id == id);
-
-            if (sesion == null)
-            {
-                return NotFound();
-            }
-            foreach (var _idAsiento in idAsientos)
-            {
-                Asiento prueba = sesion.Asientos.FirstOrDefault(a => a.Id == _idAsiento);
-                if (prueba.Comprado == true)
-                {
-                    return BadRequest("Uno de los asientos seleccionados no está disponible");
-                }
-            }
-            foreach (int idAsiento in idAsientos)
-            {
-                Asiento asientoEntrada = sesion.Asientos.FirstOrDefault(a => a.Id == idAsiento);
-
-                int posicion = sesion.Asientos.IndexOf(asientoEntrada);
-
-                if (posicion != -1)
-                {
-                    if (asientoEntrada == null)
-                    {
-                        return NotFound();
-                    }
-                    else if (asientoEntrada.Comprado == true)
-                    {
-                        return BadRequest("El asiento ya ha sido comprado");
-                    }
-                }
-                else
-                {
-                    return NotFound();
-                }
-                asientoEntrada.Comprado = true;
-                Entrada entrada = new Entrada(asientoEntrada, 4.50);
-                sesion.Asientos[posicion] = asientoEntrada;
-                sesion.Entradas.Add(entrada);
-            }
-
-
-            //EnviarEntrada(id);
-
-            return Ok(sesion.Entradas);
         }
 
         [HttpDelete("{id}")]

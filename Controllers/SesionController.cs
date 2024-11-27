@@ -54,7 +54,7 @@ namespace CineZarAPI.Controllers
         }
 
 
-        [HttpPut("ComprarEntrada/{id}")]
+        [HttpPut("{id}/ComprarEntrada")]
         public IActionResult ComprarEntrada(int id, int[] idAsientos)
         {
             Sesion sesion = Sesiones.FirstOrDefault(s => s.Id == id);

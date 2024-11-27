@@ -17,8 +17,8 @@ public class Sesion
         Identificador++;
         NumeroSala = numeroSala;
         Id = Identificador;
-        comprobarFinde(horaSesion);
-        precioEntrada = precioSesion + precioFinSemana;
+
+        precioEntrada = precioSesion - getDescuentos(horaSesion);;
         Entradas = new List<Entrada>();
         Asientos = new List<Asiento>();
 
@@ -33,20 +33,43 @@ public class Sesion
                 Asientos.Add(new Asiento(Letras[y], x + 1));
             }
         }
-        AsientoController.asientos.AddRange(Asientos);
 
 
         NumeroSala = numeroSala;
         HoraSesion = horaSesion;
 
     }
-        private double comprobarFinde(DateTime dia)
+    private double getDescuentos(DateTime dia)
+    {
+        double DescuentoDiaEspectador = 3;
+        double DescuentoDiaEntreSemana = 2; 
+        string diaSemanaSesion = dia.DayOfWeek.ToString().ToLower();
+        if(!checkFinde(diaSemanaSesion))
+        {
+            if(checkDiaEspectador(diaSemanaSesion))
+            {
+                return DescuentoDiaEspectador;
+            }
+            else return DescuentoDiaEntreSemana;
+        }
+        else return 0;
+    }
+        private bool checkFinde(string DayOfWeek)
     {
         List<string> diasFinde = ["friday", "saturday", "sunday"];
-        if (diasFinde.Contains(dia.DayOfWeek.ToString().ToLower()))
+        if (diasFinde.Contains(DayOfWeek))
         {
-            precioFinSemana = 2;
+            return true;
         }
-        return precioFinSemana;
+        else return false;
+    }
+
+    private bool checkDiaEspectador(string DayOfWeek)
+    {
+        if(DayOfWeek == "wednesday")
+        {
+            return true;
+        }
+        return false;
     }
 }
