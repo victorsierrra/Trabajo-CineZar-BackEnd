@@ -29,14 +29,14 @@ public class Pelicula
         Genero = pGenero;
         Estreno = pEstreno;
 
-        sesiones.Add(new Sesion(DateTime.Today.AddHours(14).AddMinutes(15), NumeroSala, 4.5 + precioFinSemana));
-        sesiones.Add(new Sesion(DateTime.Today.AddHours(17).AddMinutes(15), NumeroSala, 5 + precioFinSemana));
-        sesiones.Add(new Sesion(DateTime.Today.AddHours(20).AddMinutes(15), NumeroSala, 5.50 + precioFinSemana));
+        sesiones.Add(new Sesion(DateTime.Today.AddHours(14).AddMinutes(15), NumeroSala, 7.5 + precioFinSemana));
+        sesiones.Add(new Sesion(DateTime.Today.AddHours(17).AddMinutes(15), NumeroSala, 7.5 + precioFinSemana));
+        sesiones.Add(new Sesion(DateTime.Today.AddHours(20).AddMinutes(15), NumeroSala, 7.5 + precioFinSemana));
         for (int i = 1; i < 7; i++)
         {
-            sesiones.Add(new Sesion(DateTime.Today.AddHours(16).AddMinutes(15).AddDays(i), NumeroSala, 4.5 + precioFinSemana));
-            sesiones.Add(new Sesion(DateTime.Today.AddHours(19).AddMinutes(15).AddDays(i), NumeroSala, 5 + precioFinSemana));
-            sesiones.Add(new Sesion(DateTime.Today.AddHours(22).AddMinutes(15).AddDays(i), NumeroSala, 5.50 + precioFinSemana));
+            sesiones.Add(new Sesion(DateTime.Today.AddHours(16).AddMinutes(15).AddDays(i), NumeroSala, 7.5 + precioFinSemana));
+            sesiones.Add(new Sesion(DateTime.Today.AddHours(19).AddMinutes(15).AddDays(i), NumeroSala, 7.5 + precioFinSemana));
+            sesiones.Add(new Sesion(DateTime.Today.AddHours(22).AddMinutes(15).AddDays(i), NumeroSala, 7.50 + precioFinSemana));
 
         }
 
