@@ -41,27 +41,29 @@ public class Sesion
     }
     private double getDescuentos(DateTime dia)
     {
-        double DescuentoDiaEspectador = 3;
-        double DescuentoDiaEntreSemana = 2; 
+        double descuentoDiaEspectador = 3;
+        double descuentoDiaEntreSemana = 2; 
         string diaSemanaSesion = dia.DayOfWeek.ToString().ToLower();
         if(!checkFinde(diaSemanaSesion))
         {
             if(checkDiaEspectador(diaSemanaSesion))
             {
-                return DescuentoDiaEspectador;
+                return descuentoDiaEspectador;
             }
-            else return DescuentoDiaEntreSemana;
+            else return descuentoDiaEntreSemana;
         }
         else return 0;
     }
-        private bool checkFinde(string DayOfWeek)
+    private bool checkFinde(string DayOfWeek)
     {
         List<string> diasFinde = ["friday", "saturday", "sunday"];
-        if (diasFinde.Contains(DayOfWeek))
+        return (diasFinde.Contains(DayOfWeek) ? true : false);
+      /*  if (diasFinde.Contains(DayOfWeek))
         {
             return true;
         }
         else return false;
+ */
     }
 
     private bool checkDiaEspectador(string DayOfWeek)
