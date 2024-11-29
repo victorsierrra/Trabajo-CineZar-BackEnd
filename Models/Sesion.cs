@@ -53,7 +53,7 @@ public class Sesion
             }
             else return descuentoDiaEntreSemana;
         }
-        else return 0;
+        else return sinDescuento;
     }
     private bool checkFinde(string DayOfWeek)
     {
@@ -62,12 +62,7 @@ public class Sesion
     }
 
     private bool checkDiaEspectador(string DayOfWeek)
-    {/*
-        if(DayOfWeek == "wednesday")
-        {
-            return true;
-        }
-        return false;*/
+    {
         return DayOfWeek == "wednesday"? true : false;
     }
 }
