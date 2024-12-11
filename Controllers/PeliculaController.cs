@@ -89,7 +89,7 @@ namespace CineZarAPI.Controllers
             return NoContent();
         }
         [HttpDelete("{id}/BorrarOpinion")]
-        public IActionResult DeletePelicula(int id, int idOpinion)
+        public IActionResult DeleteOpinion(int id, int idOpinion)
         {
             Pelicula pelicula = peliculas.FirstOrDefault(p => p.Id == id);
             if (pelicula == null)
