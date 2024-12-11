@@ -53,6 +53,50 @@ namespace CineZarAPI.Controllers
             return NoContent();
         }
 
+        [HttpPut("{id}/DevolverEntrada")]
+        public IActionResult DevolverEntrada(int id, int[] idAsientos)
+        {
+            Sesion sesion = Sesiones.FirstOrDefault(s => s.Id == id);
+
+            if (sesion == null)
+            {
+                return NotFound();
+            }
+            foreach (var _idAsiento in idAsientos)
+            {
+                Asiento prueba = sesion.Asientos.FirstOrDefault(a => a.Id == _idAsiento);
+                if (prueba.Comprado == false)
+                {
+                    return BadRequest("Uno de los asientos seleccionados no está comprado");
+                }
+            }
+            foreach (int idAsiento in idAsientos)
+            {
+                Asiento asientoEntrada = sesion.Asientos.FirstOrDefault(a => a.Id == idAsiento);
+
+                int posicion = sesion.Asientos.IndexOf(asientoEntrada);
+
+                if (posicion != -1)
+                {
+                    if (asientoEntrada == null)
+                    {
+                        return NotFound();
+                    }
+                    else if (asientoEntrada.Comprado == false)
+                    {
+                        return BadRequest("El asiento no ha sido comprado");
+                    }
+                }
+                else
+                {
+                    return NotFound();
+                }
+                asientoEntrada.Comprado = false;
+                sesion.Asientos[posicion] = asientoEntrada;
+            }
+
+            return Ok(sesion.Asientos);
+        }
 
         [HttpPut("{id}/ComprarEntrada")]
         public IActionResult ComprarEntrada(int id, int[] idAsientos)

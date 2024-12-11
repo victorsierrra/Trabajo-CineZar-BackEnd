@@ -14,7 +14,7 @@ public class Pelicula
     public string? Genero { get; set; }
     public List<Sesion> sesiones { get; set; } = new List<Sesion>();
     public List<Opinion> Opiniones {get; set;} = new List<Opinion>();
-    public int OpinionMedia {get;set;} = 1;
+    public int OpinionMedia {get;set;} = 5;
     public int Estreno { get; set; } = 0;
     int precioFinSemana = 0;
 
