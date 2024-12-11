@@ -91,6 +91,8 @@ namespace CineZarAPI.Controllers
                 {
                     return NotFound();
                 }
+                Entrada entrada = sesion.Entradas.FirstOrDefault(en => en.asiento == asientoEntrada);
+                sesion.Entradas.Remove(entrada);
                 asientoEntrada.Comprado = false;
                 sesion.Asientos[posicion] = asientoEntrada;
             }

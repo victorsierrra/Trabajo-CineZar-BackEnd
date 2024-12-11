@@ -88,6 +88,18 @@ namespace CineZarAPI.Controllers
 
             return NoContent();
         }
+        [HttpDelete("{id}/BorrarOpinion")]
+        public IActionResult DeletePelicula(int id, int idOpinion)
+        {
+            Pelicula pelicula = peliculas.FirstOrDefault(p => p.Id == id);
+            if (pelicula == null)
+            {
+                return NotFound();
+            }
+            Opinion opinion = pelicula.Opiniones.FirstOrDefault(o => o.Id == idOpinion);
+            pelicula.Opiniones.Remove(opinion);
+            return NoContent();
+        }
 
         [HttpDelete("{id}")]
         public IActionResult DeletePelicula(int id)
@@ -124,7 +136,7 @@ namespace CineZarAPI.Controllers
         {
             int valMedia = 0;
             int valTotal = 0;
-            foreach(var opinion in pelicula.Opiniones)
+            foreach (var opinion in pelicula.Opiniones)
             {
                 valTotal += opinion.Valoracion;
             }
